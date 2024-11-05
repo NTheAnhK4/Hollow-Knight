@@ -49,4 +49,17 @@ public class ParentBehavior : MonoBehaviour
         childObject.transform.localRotation = Quaternion.identity;
         return childObject;
     }
+    protected virtual T LoadComponent<T>(T comp, string childName = null, bool searchInParent = false) where T : Component
+    {
+        if (comp == null)
+        {
+            comp = searchInParent && transform.parent != null 
+                ? transform.parent.GetComponent<T>() ?? transform.parent.gameObject.AddComponent<T>() 
+                : childName != null 
+                    ? transform.GetComponentInChildren<T>() ?? AddChildTransform(childName).AddComponent<T>() 
+                    : transform.GetComponent<T>() ?? gameObject.AddComponent<T>();
+        }
+        return comp;
+    }
+
 }
