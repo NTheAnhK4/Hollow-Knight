@@ -14,9 +14,6 @@ public class PlayerRelayData : ParentBehavior
     {
         base.LoadComponentInChild();
         anim = LoadComponent<PlayerAnim>(anim, "Model");
-        anim.LoadDataRelay(this);
         move = LoadComponent<PlayerMove>(move, "Move");
-        move.LoadDataRelay(this);
-
     }
 }

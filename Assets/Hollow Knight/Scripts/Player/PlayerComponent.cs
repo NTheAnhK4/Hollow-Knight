@@ -6,8 +6,9 @@ public class PlayerComponent : ChildBehavior
 {
     [SerializeField] protected PlayerRelayData playerRelayData;
 
-    public void LoadDataRelay(PlayerRelayData relayData)
+    protected override void LoadComponentInParent()
     {
-        this.playerRelayData = relayData;
+        base.LoadComponentInParent();
+        if (playerRelayData == null) playerRelayData = transform.GetComponentInParent<PlayerRelayData>();
     }
 }

@@ -12,7 +12,7 @@ public class PlayerAnim : PlayerComponent
     protected override void LoadComponentInParent()
     {
         base.LoadComponentInParent();
-        if (player == null) player = transform.parent;
+        if (player == null) player = transform.parent.parent;
     }
 
     protected override void LoadComponentInIt()

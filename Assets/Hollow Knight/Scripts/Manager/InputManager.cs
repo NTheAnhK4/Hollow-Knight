@@ -8,4 +8,9 @@ public class InputManager : Singleton<InputManager>
     {
         return Input.GetAxis("Horizontal") * Vector3.right;
     }
+
+    public bool IsJump()
+    {
+        return Input.GetKeyDown(KeyCode.Z);
+    }
 }
