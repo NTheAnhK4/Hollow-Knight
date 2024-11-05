@@ -141,6 +141,7 @@ Transform:
   - {fileID: 3513754289186375573}
   - {fileID: 2134181872210662931}
   - {fileID: 8337743333778611272}
+  - {fileID: 870205511182045739}
   m_Father: {fileID: 6805295425858746773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2967184655612335194
@@ -328,6 +329,55 @@ MonoBehaviour:
   player: {fileID: 0}
   entity: {fileID: 6805295425858746773}
   targetMove: {fileID: 2922235609286277300}
+--- !u!1 &6563664800937104412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 870205511182045739}
+  - component: {fileID: 3062004333192669776}
+  m_Layer: 0
+  m_Name: Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &870205511182045739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563664800937104412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3970768257621431586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3062004333192669776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563664800937104412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099c05493ff5a7345b1ec085912d87dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataRelay: {fileID: 2967184655612335194}
+  radius: 7
+  entity: {fileID: 6805295425858746773}
+  boxCollider2D: {fileID: 2511305270567507705}
+  sensedObjects: []
 --- !u!1 &6604281876315231071
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,7 +391,7 @@ GameObject:
   - component: {fileID: 6501512689333056411}
   m_Layer: 0
   m_Name: Sei Bellissima
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

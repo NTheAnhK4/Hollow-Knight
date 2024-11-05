@@ -22,6 +22,6 @@ public class EntityMove : EntityComponent
 
     private void Update()
     {
-        targetMove.Moving(entity, player, 4f);
+        targetMove.Moving(entity, player, 1f);
     }
 }
