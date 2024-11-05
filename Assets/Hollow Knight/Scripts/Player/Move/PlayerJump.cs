@@ -29,7 +29,6 @@ public class PlayerJump : ChildBehavior
     {
         if (other.transform.CompareTag("Ground"))
         {
-            Debug.Log("he");
             onGround = true;
             jumpCounter = 0;
         }
@@ -41,7 +40,6 @@ public class PlayerJump : ChildBehavior
       
         if (jumpCounter >= 2) return;
         jumpCounter++;
-        Debug.Log("Jumping");
         entity.AddForce(Vector3.up * jumpForce);
     }
 }

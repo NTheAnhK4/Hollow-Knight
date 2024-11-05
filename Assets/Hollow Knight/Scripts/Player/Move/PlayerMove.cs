@@ -38,7 +38,7 @@ public class PlayerMove : PlayerComponent
         base.ResetValue();
         curMove = MoveID.Stand;
         walkSpeed = 5f;
-        jumpForce = 360;
+        jumpForce = 300;
     }
     
 
@@ -56,6 +56,11 @@ public class PlayerMove : PlayerComponent
         playerRelayData.Anim.ChangeState("isIdle", false,true);
     }
 
+    protected void Jump()
+    {
+        playerRelayData.Anim.ChangeState("isJump",false,true);
+        jump.Jump(playerRigid,jumpForce);
+    }
     protected void ChangeMoveID(MoveID newMove)
     {
         curMove = newMove;
@@ -65,7 +70,7 @@ public class PlayerMove : PlayerComponent
         Vector3 direction = GetDirection();
         if(direction == Vector3.zero) Stand();
         else Walk(direction);
-        if (InputManager.Instance.IsJump()) jump.Jump(playerRigid,jumpForce);
-        
+        if (InputManager.Instance.IsJump()) Jump();
+
     }
 }
