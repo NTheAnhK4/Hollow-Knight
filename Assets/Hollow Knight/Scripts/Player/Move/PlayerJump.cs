@@ -40,6 +40,7 @@ public class PlayerJump : ChildBehavior
       
         if (jumpCounter >= 2) return;
         jumpCounter++;
+        
         entity.AddForce(Vector3.up * jumpForce);
     }
 }

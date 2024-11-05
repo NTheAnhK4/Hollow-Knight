@@ -18,7 +18,7 @@ public class PlayerMove : PlayerComponent
     [SerializeField] protected PlayerWalk walk;
     [SerializeField] protected PlayerJump jump;
     [SerializeField] protected float walkSpeed = 5f;
-    [SerializeField] protected float jumpForce = 20;
+    [SerializeField] protected float jumpForce;
     protected override void LoadComponentInParent()
     {
         base.LoadComponentInParent();
@@ -38,7 +38,7 @@ public class PlayerMove : PlayerComponent
         base.ResetValue();
         curMove = MoveID.Stand;
         walkSpeed = 5f;
-        jumpForce = 300;
+        jumpForce = 300f;
     }
     
 
