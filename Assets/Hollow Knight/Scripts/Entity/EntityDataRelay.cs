@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class EntityDataRelay : ParentBehavior
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] protected EntityAnim anim;
+    [SerializeField] protected EntityMove move;
+    [SerializeField] protected EntitySensor sensor;
 
-    // Update is called once per frame
-    void Update()
+    public EntityAnim Anim => anim;
+
+    public EntityMove Move => move;
+
+    public EntitySensor Sensor => sensor;
+    protected override void LoadComponentInChild()
     {
-        
+        base.LoadComponentInChild();
+        anim = LoadComponent<EntityAnim>(anim, "Model");
+        move = LoadComponent<EntityMove>(move, "Move");
+        sensor = LoadComponent<EntitySensor>(sensor, "Sensor");
     }
+    
 }

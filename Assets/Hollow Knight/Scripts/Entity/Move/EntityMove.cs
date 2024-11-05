@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EntityMove : EntityComponent
 {
-    public Transform player;
+    [SerializeField] protected Transform player;
     [SerializeField] protected Transform entity;
     [SerializeField] protected TargetedMove targetMove;
     protected override void LoadComponentInParent()
@@ -20,8 +20,16 @@ public class EntityMove : EntityComponent
         targetMove = LoadComponent<TargetedMove>(targetMove, "Target Move");
     }
 
+    protected void IsPlayerVisible()
+    {
+        player = null;
+        object virtualPlayer = dataRelay.Sensor.IsPlayerVisible();
+        if (virtualPlayer is Transform realPlayer) player = realPlayer;
+    }
     private void Update()
     {
+        IsPlayerVisible();
+        if (player == null) return;
         targetMove.Moving(entity, player, 1f);
     }
 }
