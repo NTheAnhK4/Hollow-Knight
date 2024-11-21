@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -13,6 +12,7 @@ namespace Core.Entity
         [SerializeField] protected float prePosX;
         [SerializeField] protected float curPosX;
         protected EStateAnim curStateAnim;
+        protected EStateAnim preStateAnim;
         protected override void LoadComponentInIt()
         {
             base.LoadComponentInIt();
@@ -25,10 +25,11 @@ namespace Core.Entity
             if (enity == null) enity = transform.parent;
         }
 
-        protected void OnEnable()
+        protected virtual void OnEnable()
         {
             prePosX = enity.position.x;
             curStateAnim = new EStateAnim(anim, String.Empty);
+            preStateAnim = curStateAnim;
         }
 
         protected void RotateAnim()
@@ -40,13 +41,21 @@ namespace Core.Entity
 
         }
 
-        public void ChangeState(EStateAnim newStateAnim)
+        public void ChangeState(string stateName, object valueEnter = null, object valueExit = null)
         {
-            curStateAnim?.Enter();
-            curStateAnim = newStateAnim;
+            EStateAnim newStateAnim = new EStateAnim(anim, stateName, valueEnter, valueExit);
+            if(!curStateAnim.IsTriggerState) preStateAnim = curStateAnim;
             curStateAnim?.Exit();
+            curStateAnim = newStateAnim;
+            curStateAnim?.Enter();
         }
 
+        public void TurnPreState()
+        {
+            curStateAnim?.Exit();
+            curStateAnim = preStateAnim;
+            curStateAnim?.Enter();
+        }
         protected void Update()
         {
             RotateAnim();

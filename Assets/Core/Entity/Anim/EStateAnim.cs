@@ -12,8 +12,8 @@ namespace Core.Entity
         private string stateName;
         private object valueEnter;
         private object valueExit;
-
-        public EStateAnim(Animator anim, string stateName, string valueEnter = null, string valueExit = null)
+        public bool IsTriggerState => valueEnter == null;
+        public EStateAnim(Animator anim, string stateName, object valueEnter = null, object valueExit = null)
         {
             this.anim = anim;
             this.stateName = stateName;
@@ -34,7 +34,11 @@ namespace Core.Entity
         public void Enter()
         {
             if (stateName == String.Empty) return;
-            if(valueEnter == null) anim.SetTrigger(stateName);
+            if (valueEnter == null)
+            {
+                anim.SetTrigger(stateName);
+                return;
+            }
             SetValue(valueEnter);
         }
 
