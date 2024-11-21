@@ -13,6 +13,8 @@ namespace Core.Entity
         private object valueEnter;
         private object valueExit;
         public bool IsTriggerState => valueEnter == null;
+
+        public string StateName => stateName;
         public EStateAnim(Animator anim, string stateName, object valueEnter = null, object valueExit = null)
         {
             this.anim = anim;

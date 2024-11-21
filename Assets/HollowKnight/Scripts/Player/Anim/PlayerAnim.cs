@@ -11,4 +11,6 @@ public class PlayerAnim : EAnim
         curStateAnim = new EStateAnim(anim, "isIdle", true, false);
         preStateAnim = curStateAnim;
     }
+
+  
 }

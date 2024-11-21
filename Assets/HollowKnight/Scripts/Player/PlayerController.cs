@@ -29,7 +29,11 @@ public class PlayerController : EController
 
     private void Stand()
     {
-        if(onGround) anim.ChangeState("isIdle",true,false);
+        if (onGround)
+        {
+            move.SetMoveStrategy(new PlayerStand());
+            anim.ChangeState("isIdle",true,false);
+        }
     }
     private void Walk()
     {
@@ -39,9 +43,10 @@ public class PlayerController : EController
     private void Jump()
     {
         if (jumpCount >= 2)
-        {
-            anim.TurnPreState();
-            return;
+        { 
+            move.SetMoveStrategy(new PlayerStand());
+            anim.ChangeState("isFall", true, false);
+           return;
         }
         anim.ChangeState("preJump");
         anim.ChangeState("isJump",true,false);
