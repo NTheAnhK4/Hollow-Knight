@@ -13,5 +13,9 @@ public class InputManager : Singleton<InputManager>
     {
         return Input.GetKeyDown(KeyCode.Z);
     }
-   
+
+    public bool IsAttack()
+    {
+        return Input.GetKeyDown(KeyCode.X);
+    }
 }
