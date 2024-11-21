@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {fileID: 4308690628088115961}
+  anim: {fileID: 2160763004045921879}
   jumpCount: 0
   onGround: 1
 --- !u!61 &6242228655367593132
