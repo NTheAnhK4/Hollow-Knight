@@ -25,6 +25,12 @@ public class PlayerController : EController
             anim.ChangeState("attack");
             anim.TurnPreState();
         }
+        MoveHandler();
+        
+    }
+
+    private void MoveHandler()
+    {
         if (onGround)
         {
             if (InputManager.Instance.IsJump())
@@ -70,6 +76,7 @@ public class PlayerController : EController
                 else
                 {
                     jumpCount++;
+                    anim.ChangeState("isJump",true,false);
                     move.SetMoveStrategy(new PlayerJump());
                     move.ExecuteMove();
                 }
@@ -81,8 +88,6 @@ public class PlayerController : EController
                 move.ExecuteMove();
             }
         }
-
-        
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
