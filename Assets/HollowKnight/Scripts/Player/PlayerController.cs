@@ -20,6 +20,11 @@ public class PlayerController : EController
 
     private void Update()
     {
+        if (InputManager.Instance.IsAttack())
+        {
+            anim.ChangeState("attack");
+            anim.TurnPreState();
+        }
         if (onGround)
         {
             if (InputManager.Instance.IsJump())
@@ -77,11 +82,7 @@ public class PlayerController : EController
             }
         }
 
-        if (InputManager.Instance.IsAttack())
-        {
-            anim.ChangeState("attack");
-            anim.TurnPreState();
-        }
+        
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
