@@ -6,10 +6,11 @@ using UnityEngine;
 
 namespace Core.Entity
 {
+    [System.Serializable]
     public class EStateAnim
     {
         private Animator anim;
-        private string stateName;
+        [SerializeField] private string stateName;
         private object valueEnter;
         private object valueExit;
         public bool IsTriggerState => valueEnter == null;
@@ -47,7 +48,7 @@ namespace Core.Entity
         public void Exit()
         {
             if (stateName == String.Empty) return;
-            if (valueEnter == null) return;
+            if (valueExit == null) return;
             SetValue(valueExit);
         }
         
