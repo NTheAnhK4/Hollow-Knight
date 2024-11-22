@@ -11,8 +11,8 @@ namespace Core.Entity
         [SerializeField] protected Animator anim;
         [SerializeField] protected Vector3 prePosition;
         [SerializeField] protected Vector3 curPosition;
-        protected EStateAnim curStateAnim;
-        protected EStateAnim preStateAnim;
+        [SerializeField] protected EStateAnim curStateAnim;
+        [SerializeField] protected EStateAnim preStateAnim;
         protected override void LoadComponentInIt()
         {
             base.LoadComponentInIt();
