@@ -30,13 +30,13 @@ public class GroundMove : ParentBehavior
     {
         direction = InputManager.Instance.GetHorizontal();
     }
-    private void MoveObjects(List<Transform> objectList, float speedMultiplier, bool isForeground)
+    private void MoveObjects(List<Transform> objectList, bool isForeground)
     {
         int count = objectList.Count;
         for (int i = 0; i < count; ++i)
         {
-            float speed = centralSpeed * (i + 1) / (count + 1) * speedMultiplier;
-            if (isForeground) speed *= -1; // Đảo chiều cho foreground
+            float speed = centralSpeed * (i + 1) / (count + 1);
+            if (isForeground) speed *= -1;
             objectList[i].Translate(direction * (speed * Time.deltaTime));
         }
     }
@@ -44,7 +44,7 @@ public class GroundMove : ParentBehavior
     private void Update()
     {
         GetDirection();
-        MoveObjects(foreGroundList,1,true);
-        MoveObjects(backGroundList,0.5f,false);
+        MoveObjects(foreGroundList,true);
+        MoveObjects(backGroundList,false);
     }
 }
