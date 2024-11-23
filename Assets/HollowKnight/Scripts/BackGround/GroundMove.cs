@@ -8,7 +8,7 @@ public class GroundMove : ParentBehavior
     [SerializeField] private List<Transform> foreGroundList;
     [SerializeField] private List<Transform> backGroundList;
     [SerializeField] private Vector3 direction;
-    [SerializeField] private float centralSpeed = 5f;
+    [SerializeField] private float centralSpeed = 4f;
     protected override void LoadComponentInChild()
     {
         base.LoadComponentInChild();
@@ -37,6 +37,7 @@ public class GroundMove : ParentBehavior
         {
             float speed = centralSpeed * (i + 1) / (count + 1);
             if (isForeground) speed *= -1;
+            else speed /= 10;
             objectList[i].Translate(direction * (speed * Time.deltaTime));
         }
     }
